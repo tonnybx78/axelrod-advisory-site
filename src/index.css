@@ -35,7 +35,10 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 @media (max-width:900px){.grid{grid-template-columns:repeat(6,1fr)}.grid .col6{grid-column:1/-1}}
 
 /* Reveal */
-.reveal{opacity:0;transform:translateY(8px);transition:.18s cubic-bezier(.2,.8,.2,1)}.reveal.is-in{opacity:1;transform:none}
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
 
 /* Images */
 .img--tone{width:100%;border-radius:16px;filter:brightness(.88) contrast(1.06) saturate(.95);margin:0 0 24px}
