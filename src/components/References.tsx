@@ -1,5 +1,6 @@
 export default function References() {
   const base = import.meta.env.BASE_URL;
+
   const refs: Array<[string, string]> = [
     [
       'Automotive (EU)',
