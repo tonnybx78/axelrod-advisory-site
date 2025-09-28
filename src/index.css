@@ -16,12 +16,12 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 
 /* Hero (dark overlay + image from public) */
 .hero{position:relative;min-height:clamp(520px,60vh,760px);display:flex;align-items:center;background:#0A0A0A}
-.hero::before{content:"";position:absolute;inset:0;background:
-  linear-gradient(to bottom,rgba(10,10,10,.72),rgba(10,10,10,.72)),
-  url('assets/images/hero-ce-office.webp?v=2') center/cover no-repeat;filter:contrast(1.05)}
-.hero>*{position:relative}.hero h1{font-family:'Manrope',system-ui;font-weight:700;letter-spacing:-0.01em}
-.hero .container{padding:80px 0}
-
+.hero::before{
+  background:
+    linear-gradient(to bottom,rgba(10,10,10,.72),rgba(10,10,10,.72)),
+    url('assets/images/hero-ce-office.webp?v=2') center/cover no-repeat;
+}
+  
 /* Sections */
 .section{padding:80px 0}.section h2{font-family:'Manrope',system-ui;font-weight:700;letter-spacing:-0.01em;font-size:clamp(28px,2.6vw,36px);margin:0 0 12px}
 .section p.lead{font-size:18px;color:#1F1F1F;margin:0 0 24px}
