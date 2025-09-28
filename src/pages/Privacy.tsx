@@ -3,7 +3,7 @@ export default function Privacy(){
     <main className="section container">
       <h1>Privacy Policy</h1>
       <p><b>TL;DR:</b> We only collect what you submit and what’s necessary to run the site. No non-essential cookies without consent. You can request access/erasure anytime at <a href="mailto:antonin@axelrods.biz">antonin@axelrods.biz</a>.</p>
-      <p><i>Last updated: [fill date]. Company details: Axelrod Advisory s.r.o., IČO [fill], Registered office [fill].</i></p>
+      <p><i>Last updated: 1.1.2025 . Company details: Axelrod Advisory s.r.o., IČO 08936081, Registered office Prague, Czech Republic.</i></p>
       <h2>Data we process</h2>
       <ul>
         <li>Contact details you submit (name, work email, company, message)</li>
