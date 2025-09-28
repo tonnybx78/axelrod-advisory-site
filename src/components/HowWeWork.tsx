@@ -1,6 +1,7 @@
 export default function HowWeWork() {
   const base = import.meta.env.BASE_URL;
-  const steps = [
+
+  const steps: Array<[string, string]> = [
     ['Discovery', 'quick assessment & opportunity scan'],
     ['Design', 'target process & solution blueprint'],
     ['Pilot', 'prove value with real data and users'],
@@ -44,30 +45,6 @@ export default function HowWeWork() {
                   <p style={{ margin: 0 }}>{t}</p>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-export default function HowWeWork(){
-  const steps = [
-    ['Discovery','quick assessment & opportunity scan'],
-    ['Design','target process & solution blueprint'],
-    ['Pilot','prove value with real data and users'],
-    ['Scale','implement, integrate, document'],
-    ['Enable','training, handover, support'],
-  ];
-  return (
-    <section id="howwework" className="section reveal">
-      <div className="container">
-        <img src="assets/images/workflow-dash.webp" alt="Analytics workflow" className="img--tone" />
-        <div className="grid">
-          {steps.map(([h,t],i)=>(
-            <div key={i} className="card col6">
-              <h3>{i+1}. {h}</h3>
-              <p>{t}</p>
             </div>
           ))}
         </div>
