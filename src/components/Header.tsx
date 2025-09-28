@@ -12,9 +12,11 @@ export default function Header() {
       >
         <a href="/">
           <img
-            src="assets/images/axelrod-logo-bw.jpg"
+            src={`${import.meta.env.BASE_URL}assets/images/axelrod-logo-bw.jpg`}
             alt="Axelrod Advisory"
-            style={{ height: 28 }}
+            style={{ height: 28, width: 'auto', display: 'block' }}
+            loading="eager"
+            decoding="async"
           />
         </a>
 
