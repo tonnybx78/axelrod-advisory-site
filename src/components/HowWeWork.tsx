@@ -9,7 +9,7 @@ export default function HowWeWork(){
   return (
     <section id="howwework" className="section reveal">
       <div className="container">
-        <img src="/assets/images/workflow-dash.webp" alt="Analytics workflow" className="img--tone"/>
+        <img src={`${import.meta.env.BASE_URL}assets/images/workflow-dash.webp`} ... />
         <div className="grid">
           {s.map(([h,t],i)=>(
             <div className="card col6" key={i}><h3>{i+1}. {h}</h3><p>{t}</p></div>
