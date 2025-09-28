@@ -44,3 +44,11 @@ a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
 form label{display:flex;flex-direction:column;gap:6px}input,textarea{padding:12px 14px;border:1px solid var(--hair);border-radius:12px;background:#fff;font:inherit}
 .checkbox{display:flex;flex-direction:row;align-items:center;gap:10px}
 :focus-visible{outline:2px solid #000;outline-offset:2px}
+/* Smooth scroll a základní layout */
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+  display: block; /* pro jistotu, aby byl main vykreslen jako block */
+}
