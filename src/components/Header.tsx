@@ -1,4 +1,11 @@
 export default function Header() {
+  const base = import.meta.env.BASE_URL; // např. "/axelrod-advisory-site/"
+  const logo = `${base}assets/images/axelrod-logo-bw.jpg`;
+
+  // Pomocné logování (uvidíš v DevTools Console po načtení stránky)
+  console.log('BASE_URL =', base);
+  console.log('Logo URL =', logo);
+
   return (
     <header className="header">
       <div
@@ -10,9 +17,9 @@ export default function Header() {
           height: 64,
         }}
       >
-        <a href="/">
+        <a href={base}>
           <img
-            src={`${import.meta.env.BASE_URL}assets/images/axelrod-logo-bw.jpg`}
+            src={logo}
             alt="Axelrod Advisory"
             style={{ height: 28, width: 'auto', display: 'block' }}
             loading="eager"
