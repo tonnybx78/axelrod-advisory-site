@@ -1,6 +1,18 @@
 import { useEffect } from 'react';
-...
+
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import HowWeWork from './components/HowWeWork';
+import References from './components/References';
+import Insights from './components/Insights';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import './index.css';
+
 export default function App() {
+  // Smooth scroll + reveal-on-scroll
   useEffect(() => {
     // Smooth scroll
     const onClick = (e: MouseEvent) => {
@@ -17,7 +29,7 @@ export default function App() {
     };
     document.addEventListener('click', onClick);
 
-    // Reveal on scroll
+    // Reveal on scroll (aktivuje .reveal is-in)
     const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
     const io = new IntersectionObserver(
       entries => {
@@ -32,51 +44,13 @@ export default function App() {
     );
     els.forEach(el => io.observe(el));
 
-    // Fallback: po načtení přidej is-in všemu (kdyby IO nebyl dostupný)
+    // Fallback pro starší prohlížeče
     if (!('IntersectionObserver' in window)) els.forEach(el => el.classList.add('is-in'));
 
     return () => {
       document.removeEventListener('click', onClick);
       io.disconnect();
     };
-  }, []);
-  ...
-}
-
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import HowWeWork from './components/HowWeWork';
-import References from './components/References';
-import Insights from './components/Insights';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import './index.css';
-
-export default function App() {
-  // Smooth-scroll i ve starších prohlížečích (fallback k CSS scroll-behavior)
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (!t) return;
-      const link = t.closest('a[href^="#"]') as HTMLAnchorElement | null;
-      if (!link) return;
-
-      const id = link.getAttribute('href')?.slice(1);
-      if (!id) return;
-
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      e.preventDefault();
-      const y = el.getBoundingClientRect().top + window.scrollY - 72; // offset pro sticky header
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      history.replaceState(null, '', `#${id}`);
-    };
-
-    document.addEventListener('click', onClick);
-    return () => document.removeEventListener('click', onClick);
   }, []);
 
   return (
