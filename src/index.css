@@ -57,3 +57,8 @@ html {
 main {
   display: block; /* pro jistotu, aby byl main vykreslen jako block */
 }
+/* Dočasné odhalení všech sekcí */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
