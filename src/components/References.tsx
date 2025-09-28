@@ -7,7 +7,7 @@ export default function References(){
   return (
     <section id="references" className="section reveal">
       <div className="container">
-        <img src="/assets/images/training-session.webp" alt="AI training session" className="img--tone"/>
+        <img src={`${import.meta.env.BASE_URL}assets/images/training-session.webp`} ... />
         <div className="grid">
           {r.map(([h,t])=>(<div className="card col6" key={h}><h3>{h}</h3><p>{t}</p></div>))}
         </div>
