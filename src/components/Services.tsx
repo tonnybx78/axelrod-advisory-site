@@ -8,7 +8,7 @@ export default function Services(){
   return (
     <section id="services" className="section reveal">
       <div className="container">
-        <img src="/assets/images/services-workshop.webp" alt="Process mapping workshop" className="img--tone"/>
+        <img src={`${import.meta.env.BASE_URL}assets/images/services-workshop.webp`} ... />
         <small style={{color:'#6F6F6F',letterSpacing:'0.08em',textTransform:'uppercase'}}>Smart Strategy. Simple Execution.</small>
         <div className="grid" style={{marginTop:20}}>
           {items.map(it=>(
