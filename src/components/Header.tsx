@@ -2,7 +2,7 @@ export default function Header(){
   return (
     <header className="header">
       <div className="container" style={{display:'flex',alignItems:'center',justifyContent:'space-between',height:64}}>
-        <a href="/"><img src="/assets/images/axelrod-logo-bw.jpg" alt="Axelrod Advisory" style={{height:28}}/></a>
+        <a href="/"><img src={`${import.meta.env.BASE_URL}assets/images/axelrod-logo-bw.jpg`} alt="Axelrod Advisory" style={{height:28}} />
         <nav className="nav">
           <a href="#about">About</a>
           <a href="#services">Services</a>
