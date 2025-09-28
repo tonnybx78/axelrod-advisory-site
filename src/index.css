@@ -1,64 +1,181 @@
-:root{--page-bg:#F6F6F4;--hair:#E6E6E6;--accent:#FFD200;--txt:#0A0A0A}
-*{box-sizing:border-box}html,body,#root{height:100%}
-body{margin:0;background:var(--page-bg);color:var(--txt);font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial}
-a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+/* ---------- Base / Tokens ---------- */
+:root{
+  --bg: #F6F6F4;
+  --text: #1E1E1E;
+  --muted: #6F6F6F;
+  --card: #FFFFFF;
+  --line: #E6E6E3;
+  --brand: #FFD200;     /* žlutý akcent */
+  --brand-ink: #221A00; /* text na žlutém */
+  --shadow: 0 8px 28px rgba(0,0,0,.06);
+  --radius: 14px;
+  --radius-lg: 18px;
+  --maxw: 1200px;
+  --header-h: 72px;
+}
 
-/* Header */
-.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);
-  border-bottom:1px solid var(--hair);backdrop-filter:saturate(1.2) blur(6px)}
-.nav{display:flex;gap:24px;align-items:center}.nav a.btn{margin-left:8px}
+/* ---------- Reset / Base ---------- */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-family: "Manrope","Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;
+  font-size:16px;
+}
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; text-decoration:none; }
+a:hover{ text-decoration:underline; }
+:focus-visible{ outline:2px solid #0A84FF; outline-offset:2px; }
 
-/* Cards & buttons */
-.card{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:28px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid var(--hair);cursor:pointer}
-.btn--primary{background:var(--accent);color:#000}
+/* ---------- Layout helpers ---------- */
+.container{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:20px;
+}
+.section{
+  padding: clamp(56px, 6vw, 96px) 0;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap: clamp(14px, 2.2vw, 24px);
+}
+.col6{ grid-column: span 6; }
+.col12{ grid-column: 1 / -1; }
 
-/* Hero (dark overlay + image from public) */
+/* ---------- Header / Nav ---------- */
+.header{
+  position:sticky; top:0; z-index:50;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  height:var(--header-h);
+}
+.nav{
+  display:flex; align-items:center; gap:18px;
+}
+.nav a{
+  padding:8px 12px; border-radius:999px;
+  border:1px solid transparent;
+  text-decoration:none;
+}
+.nav a:hover{ background:#F7F7F5; }
+.nav .btn{ border-color:#D7D7D3; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid #CFCFCA;
+  background:#fff;
+  text-decoration:none;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn--primary{
+  background:var(--brand);
+  color:var(--brand-ink);
+  border-color:#EEC700;
+}
+.btn--primary:hover{ filter: saturate(1.02) brightness(1.01); }
+
+/* ---------- Hero ---------- */
+/* Pozadí hero je nastavované inline ve <Hero /> přes style={} */
 .hero{
-  position:relative;
-  min-height:clamp(520px,60vh,760px);
-  display:flex;
-  align-items:center;
-  background:#0A0A0A; /* fallback když by se obrázek nenačetl */
+  min-height: clamp(560px, 64vh, 760px);
+  display:flex; align-items:center;
+  color:#101010;
 }
-.hero > *{ position:relative; }
-.hero h1{ font-family:'Manrope',system-ui; font-weight:700; letter-spacing:-0.01em }
-  
-/* Sections */
-.section{padding:80px 0}.section h2{font-family:'Manrope',system-ui;font-weight:700;letter-spacing:-0.01em;font-size:clamp(28px,2.6vw,36px);margin:0 0 12px}
-.section p.lead{font-size:18px;color:#1F1F1F;margin:0 0 24px}
+.hero .container{ max-width:1100px; }
+.hero h1{
+  font-size: clamp(32px, 4vw, 44px);
+  line-height:1.12;
+  margin:0 0 16px 0;
+  font-weight:800;
+  letter-spacing:-0.01em;
+}
+.hero p{
+  color:#2A2A2A;
+  max-width: 920px;
+}
 
-/* Grid */
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-.grid .full{grid-column:1/-1}.grid .col6{grid-column:span 6}
-@media (max-width:900px){.grid{grid-template-columns:repeat(6,1fr)}.grid .col6{grid-column:1/-1}}
+/* ---------- Cards / Surfaces ---------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: clamp(16px, 2.2vw, 22px);
+}
+.card h3{ margin:0 0 8px 0; font-size: clamp(18px, 2.4vw, 22px); }
+.card p{ margin:0; }
 
-/* Reveal */
-.reveal {
-  opacity: 0;
+/* ---------- Typography ---------- */
+h2{
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height:1.15;
+  margin:0 0 18px 0;
+  letter-spacing:-0.01em;
+}
+.lead{
+  color:var(--muted);
+  max-width:820px;
+  margin:0 0 28px 0;
+}
+
+/* ---------- Imagery helpers ---------- */
+.img--tone{
+  width:100%;
+  border-radius: var(--radius-lg);
+  border:1px solid var(--line);
+  box-shadow: var(--shadow);
+  filter: saturate(0.98) contrast(1.02);
+}
+
+/* ---------- Reveal animation ---------- */
+.reveal{
+  opacity:0;
   transform: translateY(8px);
-  transition: .18s cubic-bezier(.2,.8,.2,1);
+  transition: opacity .22s cubic-bezier(.2,.8,.2,1), transform .22s cubic-bezier(.2,.8,.2,1);
 }
-.reveal.is-in { opacity: 1; transform: none; }
-
-/* Images */
-.img--tone{width:100%;border-radius:16px;filter:brightness(.88) contrast(1.06) saturate(.95);margin:0 0 24px}
-
-/* Forms */
-form label{display:flex;flex-direction:column;gap:6px}input,textarea{padding:12px 14px;border:1px solid var(--hair);border-radius:12px;background:#fff;font:inherit}
-.checkbox{display:flex;flex-direction:row;align-items:center;gap:10px}
-:focus-visible{outline:2px solid #000;outline-offset:2px}
-/* Smooth scroll a základní layout */
-html {
-  scroll-behavior: smooth;
+.reveal.is-in{
+  opacity:1;
+  transform:none;
 }
 
-main {
-  display: block; /* pro jistotu, aby byl main vykreslen jako block */
+/* Pokud nechceš animaci a chceš vše hned vidět, odkomentuj:
+.reveal{ opacity:1 !important; transform:none !important; }
+*/
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  background:#fff;
+  padding: 28px 0;
+  color:#3A3A38;
+  font-size:14px;
 }
-/* Dočasné odhalení všech sekcí */
-.reveal {
-  opacity: 1 !important;
-  transform: none !important;
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px){
+  .col6{ grid-column: 1 / -1; }
+  .nav{ gap:12px; }
 }
+@media (max-width: 640px){
+  .header{ height:64px; }
+  .nav{ display:none; } /* jednoduché – na mobilu jen logo; lze nahradit burgerem */
+  .btn{ padding:9px 14px; }
+  .hero{ min-height: 62vh; }
+  .grid{ gap:16px; }
+}
+
+/* ---------- Minor details ---------- */
+hr{ border:0; border-top:1px solid var(--line); margin:32px 0; }
+small, .muted{ color:var(--muted); }
