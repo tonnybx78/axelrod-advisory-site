@@ -1,6 +1,6 @@
 export default function Header() {
-  const base = import.meta.env.BASE_URL; // např. "/axelrod-advisory-site/"
-  const logo = `${base}assets/images/axelrod-logo-bw.jpg`;
+  const base = import.meta.env.BASE_URL;
+const logo = `${base}assets/images/axelrod-logo-bw.jpg?v=4`; // <— přidané ?v=4
 
   // Pomocné logování (uvidíš v DevTools Console po načtení stránky)
   console.log('BASE_URL =', base);
