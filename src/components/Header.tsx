@@ -1,10 +1,8 @@
+import { useState } from 'react';
+
 export default function Header() {
   const base = import.meta.env.BASE_URL;
-const logo = `${base}assets/images/axelrod-logo-bw.jpg?v=4`; // <— přidané ?v=4
-
-  // Pomocné logování (uvidíš v DevTools Console po načtení stránky)
-  console.log('BASE_URL =', base);
-  console.log('Logo URL =', logo);
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="header">
@@ -19,15 +17,23 @@ const logo = `${base}assets/images/axelrod-logo-bw.jpg?v=4`; // <— přidané ?
       >
         <a href={base}>
           <img
-            src={logo}
+            src={`${base}assets/images/axelrod-logo-bw.jpg?v=5`}
             alt="Axelrod Advisory"
-            style={{ height: 28, width: 'auto', display: 'block' }}
+            style={{ height: 36, width: 'auto', display: 'block' }}
             loading="eager"
             decoding="async"
           />
         </a>
 
-        <nav className="nav">
+        <button
+          aria-label="Toggle menu"
+          className="nav-toggle"
+          onClick={() => setOpen(v => !v)}
+        >
+          ☰
+        </button>
+
+        <nav className={`nav ${open ? 'is-open' : ''}`}>
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#howwework">How we work</a>
