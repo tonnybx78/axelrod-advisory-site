@@ -1,4 +1,47 @@
 import { useEffect } from 'react';
+...
+export default function App() {
+  useEffect(() => {
+    // Smooth scroll
+    const onClick = (e: MouseEvent) => {
+      const t = e.target as HTMLElement | null;
+      const a = t?.closest('a[href^="#"]') as HTMLAnchorElement | null;
+      if (!a) return;
+      const id = a.getAttribute('href')!.slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      const y = el.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      history.replaceState(null, '', `#${id}`);
+    };
+    document.addEventListener('click', onClick);
+
+    // Reveal on scroll
+    const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.classList.add('is-in');
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.12 }
+    );
+    els.forEach(el => io.observe(el));
+
+    // Fallback: po načtení přidej is-in všemu (kdyby IO nebyl dostupný)
+    if (!('IntersectionObserver' in window)) els.forEach(el => el.classList.add('is-in'));
+
+    return () => {
+      document.removeEventListener('click', onClick);
+      io.disconnect();
+    };
+  }, []);
+  ...
+}
 
 import Header from './components/Header';
 import Hero from './components/Hero';
